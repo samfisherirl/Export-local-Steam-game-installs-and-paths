@@ -8,6 +8,5 @@ adding requirements and more details but this is done with:
 -python 3.10
 
 issues: 
- need to test for alternate paths for 
-right now this release requires standard steam install paths, if your library isnt at the below path, it will throw an error. this will be fixed today.
+ need to test for alternate paths - right now this release requires standard steam install paths, if your library isnt at the below path, it will throw an error. this will be fixed today.
 'C:\\Program Files (x86)\\Steam\\config\\libraryfolders.vdf'
