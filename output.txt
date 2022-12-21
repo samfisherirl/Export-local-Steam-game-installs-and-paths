@@ -58,7 +58,6 @@ D:\SteamLibrary\steamapps\common\Project CARS 2\pCARS2Gld.exe
 D:\SteamLibrary\steamapps\common\Project CARS 2\pCARS2Gld.exe
 D:\SteamLibrary\steamapps\common\Project CARS 2\pCARS2QA.exe
 D:\SteamLibrary\steamapps\common\Project CARS 2\pCARS2QA.exe
-C:\Program Files (x86)\Steam\steamapps\common\Virtual Desktop\Virtual Desktop.exe
 D:\SteamLibrary\steamapps\common\Virtual Desktop\Virtual Desktop.exe
 D:\SteamLibrary\steamapps\common\Squad\squad_launcher.exe
 E:\SteamLibrary\steamapps\common\Squad\squad_launcher.exe
@@ -66,7 +65,9 @@ D:\SteamLibrary\steamapps\common\DiRT 4\dirt4.exe
 D:\SteamLibrary\steamapps\common\DiRT 4\dirt4.exe
 D:\SteamLibrary\steamapps\common\DiRT 4\dirt4_qa.exe
 D:\SteamLibrary\steamapps\common\DiRT 4\dirt4_qa.exe
+C:\Program Files (x86)\Steam\steamapps\common\Factorio\bin\x64\Factorio.exe
 F:\SteamLibrary\steamapps\common\Factorio\bin\x64\Factorio.exe
+C:\Program Files (x86)\Steam\steamapps\common\Factorio\bin\Win32\Factorio.exe
 F:\SteamLibrary\steamapps\common\Factorio\bin\Win32\Factorio.exe
 F:\SteamLibrary\steamapps\common\Whirligig\Whirligig.exe
 F:\SteamLibrary\steamapps\common\Whirligig\Whirligig.exe
@@ -134,7 +135,9 @@ F:\SteamLibrary\steamapps\common\CRSED\cuisine_royale_eac_launcher.exe
 D:\SteamLibrary\steamapps\common\PokerStars VR\PokerStarsVR.exe
 F:\SteamLibrary\steamapps\common\RUMBLE\RUMBLE.exe
 D:\SteamLibrary\steamapps\common\Valheim\valheim.exe
+F:\SteamLibrary\steamapps\common\Valheim\valheim.exe
 D:\SteamLibrary\steamapps\common\Valheim\valheim.exe
+F:\SteamLibrary\steamapps\common\Valheim\valheim.exe
 D:\SteamLibrary\steamapps\common\Deadside\Deadside.exe
 E:\SteamLibrary\steamapps\common\WAR DUST\WarDust.exe
 E:\SteamLibrary\steamapps\common\Project CARS 3\pCARS3.exe
@@ -145,6 +148,8 @@ E:\SteamLibrary\steamapps\common\Project CARS 3\VirgoGld.exe
 E:\SteamLibrary\steamapps\common\Project CARS 3\Virgo.exe
 D:\SteamLibrary\steamapps\common\Lossless Scaling\LosslessScaling.exe
 D:\SteamLibrary\steamapps\common\PGA TOUR 2K21\golf.exe
+D:\SteamLibrary\steamapps\common\Beyond The Wire\btw_launcher.exe
+D:\SteamLibrary\steamapps\common\Beyond The Wire\WireGame.exe
 E:\SteamLibrary\steamapps\common\Transport Fever 2\TransportFever2.exe
 E:\SteamLibrary\steamapps\common\OVR Toolkit\OVRToolkit-Launcher.exe
 D:\SteamLibrary\steamapps\common\Virtual Home Theater Demo\VHT_demo_steamvr.exe
