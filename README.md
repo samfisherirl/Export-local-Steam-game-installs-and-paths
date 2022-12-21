@@ -13,3 +13,5 @@ issues:
 
 need to remove duplicates
 
+-update: it currently includes duplicates but this will be fixed, along with better matching 12/21/22
+![image](https://user-images.githubusercontent.com/98753696/208944151-4638e4a8-2ebc-4322-941d-15d962c9e073.png)
