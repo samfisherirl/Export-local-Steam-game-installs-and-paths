@@ -9,5 +9,5 @@ need to add requirements and more details but this is done with:
 
 need to remove duplicates, it does identify correct paths with some missing. Registry search being added.
 
--update: it currently includes duplicates but this will be fixed, along with better matching 12/21/22
+-update: it currently includes duplicates but this will be fixed, along with better matching 12/24/22
 ![image](https://user-images.githubusercontent.com/98753696/208944151-4638e4a8-2ebc-4322-941d-15d962c9e073.png)
