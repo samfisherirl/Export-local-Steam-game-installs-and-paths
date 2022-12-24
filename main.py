@@ -43,8 +43,9 @@ def main():
         #################################
         # example of calling library methods 
         # validate that path file exists
-        paths = V.callLibrary(lib, directory)
-        if paths == False:
+        try:
+            paths = V.callLibrary(lib, directory)
+        except: 
             print('\n\nNo paths found. Please locate what should be in: \n===>C:\\Program Files (x86)\\Steam\\config\\libraryfolders.vdf\n\nMove this file adjacent to this app and try again.')
             time.sleep(5)
             return

@@ -11,14 +11,17 @@ Steam64 = 'C:\\Program Files\\Steam\\config\\libraryfolders.vdf'
 # 		self.path = os.path.join(dirname, filename)	
 
 def test(directory):
-	if exists(Steam86):
-		return Steam86
-	elif exists(Steam64):
-		return Steam64
-	elif exists(os.path.join(directory, 'libraryfolders.vdf')):
-		return os.path.join(directory, 'libraryfolders.vdf')
-	else:
-		return False
+	try: 
+		if exists(Steam86):
+			return Steam86
+		elif exists(Steam64):
+			return Steam64
+	except:
+		if exists(os.path.join(directory, 'libraryfolders.vdf')):
+			return os.path.join(directory, 'libraryfolders.vdf')
+		else:
+			return False
+	
 
 def read(library):
 		
@@ -61,12 +64,17 @@ def loopfolders(directories):
 def exists(file):
 	return os.path.exists(file)
 
-def main(directory): 
-	library = test(directory)
-	if library == False:
+def check_path(directory): 
+	try:
+		library = test(directory)
+		return library
+	except:
 		print('\n\nno library found\n===>C:\\Program Files (x86)\\Steam\\config\\libraryfolders.vdf\n\nMove this file adjacent to this app and try again.')
 		time.sleep(10)
 		return False
+
+def grab_paths(library):
+  
 	locations = read(library)
 	dirs = clean(locations)
 	print(dirs)

@@ -19,7 +19,7 @@ def verify_vdf_location(directory):
 
     except:
         print(
-            'file not found in \'C:\Program Files (x86)\Steam\appcache\appinfo.vdf\'\nTry placing it in the same directory as this application.\nIf you already have, ignore this error.')
+            r'file not found in \'C:\Program Files (x86)\Steam\appcache\appinfo.vdf\'\nTry placing it in the same directory as this application.\nIf you already have, ignore this error.')
     try:
         if os.path.exists(os.path.join(directory, 'appinfo.vdf')):
             print('\n\nFound it!')
@@ -127,10 +127,15 @@ def class_constructor(gameLib):
 
 
 def callLibrary(lib, directory):
-    pathers = LP.main(directory)
-    print(str(pathers))
+    library = LP.check_path(directory)
+    if library == False:
+        print('\n\nno library found\n===>C:\\Program Files (x86)\\Steam\\config\\libraryfolders.vdf\n\nMove this file adjacent to this app and try again.')
+        return False
+    else:
+        LP.grab_paths(library)
+    print(str(library))
     print(lib[3].path + lib[3].exe)
-    return pathers
+    return library
 
 
 def pathValidator(paths, lib):
