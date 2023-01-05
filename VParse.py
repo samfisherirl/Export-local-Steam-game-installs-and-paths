@@ -5,28 +5,27 @@ import sys
 import shutil
 import json
 import os.path
-import library_paths as LP
+import settings as S
+import library_paths as LP 
 
-appinfo = r'C:\Program Files (x86)\Steam\appcache\appinfo.vdf'
- 
-
-
+appinfo = S.appinfo()
+dirname = S.dirname()
 def verify_vdf_location(directory):
-    global appinfo
+    # global appinfo, dirname 
+    
     try:
-        shutil.copy2(appinfo, (os.path.join(directory, 'appinfo.vdf')))
-        return True
-
-    except:
-        print(
-            r'file not found in \'C:\Program Files (x86)\Steam\appcache\appinfo.vdf\'\nTry placing it in the same directory as this application.\nIf you already have, ignore this error.')
-    try:
-        if os.path.exists(os.path.join(directory, 'appinfo.vdf')):
-            print('\n\nFound it!')
-            appinfo = os.path.join(directory, 'appinfo.vdf')
+        if os.path.exists(appinfo):
+            path = os.path.join(directory, 'appinfo.vdf')
+            shutil.copy2(appinfo, path)
             return True
     except:
-        return False
+        if os.path.exists(os.path.join(directory, 'appinfo.vdf')):
+            path = os.path.join(directory, 'appinfo.vdf')    
+            return True
+        else:
+            print(
+            r'file not found in \'C:\Program Files (x86)\Steam\appcache\appinfo.vdf\'\nTry placing it in the same directory as this application.\nIf you already have, ignore this error.') 
+            return False
 
 
 def call_vdfp(directory):
@@ -44,7 +43,7 @@ def call_vdfp(directory):
 
 
 def parse_json(list):
-    global gameLib
+    global gameLib 
     gameLib = []
     game = {}
     # data format
@@ -81,7 +80,7 @@ def parse_json(list):
                     wd,
                     name,
                     executable,
-                    'xxxxxx'
+                    'xxxx'
                 ]
 
                 for t, y in zip(iterator, holder):
@@ -113,12 +112,13 @@ class Library:
  
 
 def class_constructor(gameLib):
+    global appinfo, dirname 
     # create library objects,
     # using a list to keep track
     lib = []
     x = 0
     for i in gameLib:
-        lib.append(Library(i['exe'], i['path'], i['name'], 'xxxxx'))
+        lib.append(Library(i['exe'], i['path'], i['name'], 'xxxx'))
     x = x + 1
     return lib
 
@@ -126,29 +126,29 @@ def class_constructor(gameLib):
 
 
 
-def callLibrary(lib, directory):
+def call_lib(lib, directory):
+    global appinfo, dirname
     library = LP.check_path(directory)
     if library == False:
         print('\n\nno library found\n===>C:\\Program Files (x86)\\Steam\\config\\libraryfolders.vdf\n\nMove this file adjacent to this app and try again.')
         return False
     else:
-        LP.grab_paths(library)
+        library = LP.grab_paths(library)
     print(str(library))
-    print(lib[3].path + lib[3].exe)
+    print(lib[9].path + lib[9].exe)
     return library
 
 
-def pathValidator(paths, lib):
-    global matched
+def path_validation(paths, lib): 
+    global matched, appinfo, dirname 
     matched = []
     for i in lib:
-        for path in paths:
-            struct = i.path  # + "\\" + i.exe
+        for path in paths: 
             post = i.path + "\\" + i.exe
-            x = path + struct.replace('\\\\', '\\')
+            x = path + post.replace('\\\\', '\\')
             if os.path.exists(x):
                 i.longpath = x + "\\" + i.exe
-                matched.append(i.longpath)
+                matched.append([i.name, i.exe, i.path, i.longpath])
     print('finished')
     print(str(matched))
     return [lib, matched]
@@ -164,6 +164,7 @@ def pathValidator(paths, lib):
  
 
 def writer(lib, directory):
+    global appinfo, dirname 
     log = os.path.join(directory, 'output.txt')
     csv = os.path.join(directory, 'output.csv')
     try:
@@ -175,10 +176,12 @@ def writer(lib, directory):
         with open(csv, 'w', encoding='utf-8') as g:
             f.write('here are your matched paths, next update includes name. ')
             x = 0
-            for i in matched:
-                f.write(i)
+            for i in lib[1]:
+
+                ## i.name, i.exe, i.path, i.longpath
+                f.write(str('||' + i[3] + '|' + i[0] + '|' + i[1] + '|' + i[2] + '|'))
                 f.write('\n')
-                g.write(i)
+                g.write(str('||' + i[3] + '|' + i[0] + i[1] + '|' + i[2] + '|'))
                 g.write('\n')
                 # for key, val in i.items():
                 #     g.write(("\n   " + key + ': ' + val + '\n'))
