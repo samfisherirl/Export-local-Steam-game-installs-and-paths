@@ -1,6 +1,5 @@
 # All-in-one-tool to export steam libraries, no coding or compiling. 
-
-big update with gui coming for general use. 
+ 
 
 https://streamable.com/jv5e2l
 VDF Parser in python (and compiled release with .exe) 
