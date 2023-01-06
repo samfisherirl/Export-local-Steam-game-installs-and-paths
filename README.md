@@ -14,5 +14,5 @@ need to add requirements and more details but this is done with:
 need to remove duplicates, it does identify correct paths with some missing. Registry search being added.
 
 -update: it currently includes duplicates ~~and a bad delimiter~~, this will be fixed. 
- ![image](https://user-images.githubusercontent.com/98753696/210748958-695baac4-8bbe-4c0e-950d-3b9c1d762787.png)
+![image](https://user-images.githubusercontent.com/98753696/210921205-e4ccffc0-4df7-40a4-906f-fd43ec175487.png)
 
