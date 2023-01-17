@@ -1,4 +1,4 @@
-# All-in-one-tool to export steam libraries, no coding or compiling. 
+# All-in-one-tool to export steam game paths to csv, no coding or compiling. 
  
  Update v1 release. Locates steam library folder, paths, and everything without command line. Exports to CSV and TXT.
  
