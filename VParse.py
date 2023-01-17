@@ -93,14 +93,12 @@ def parse_json(list):
             except:
                 continue
             if ".exe" in executable:
-                p = 'C:\\program files\\Steam\common\\'
                 holder = [
                     wd,
                     name,
                     executable,
                     'xxxx',
-                    x
-                ]
+                    x]
 
                 for t, y in zip(iterator, holder):
                     try:
@@ -200,7 +198,7 @@ def writer(lib, directory):
                 ## i.name, i.exe, i.path, i.longpath
                 f.write(str('||' + i[3] + '|' + i[0] + '|' + i[1] + '|' + i[2] + '|'))
                 f.write('\n')
-                g.write(str('||' + i[3] + '|' + i[0] + i[1] + '|' + i[2] + '|'))
+                g.write(str('||' + i[3] + '|' + i[0] + '|' + i[1] + '|' + i[2] + '|'))
                 g.write('\n')
                 # for key, val in i.items():
                 #     g.write(("\n   " + key + ': ' + val + '\n'))
