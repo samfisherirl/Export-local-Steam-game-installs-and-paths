@@ -7,14 +7,18 @@ https://streamable.com/jv5e2l
 VDF Parser in python (and compiled release with .exe) 
 Thank you to @Grub4K at https://github.com/Grub4K/VDFparse/releases
 
+Simply run the exe within the release dir, this application will:
+- run powershell to find steam's location and account for weird locations
+- grab and deserialize the steam library file
+- identify all steam libraries 
+- test each game file structure for valid paths and return only valid games with path, folder struct, and formatted name. 
+
 He's done most of the work. I'm just bridging the gap from file structure to merge with full paths, providing other file-formats, and validating paths. 
 
-need to add requirements and more details but this is done with: 
+ requirements:
 
 -python 3.10 
 
-need to remove duplicates, it does identify correct paths with some missing. Registry search being added.
+ ![image](https://user-images.githubusercontent.com/98753696/212842672-507bab4e-ddc5-46dd-824a-f17cee1f71ca.png)
 
--update: it currently includes duplicates ~~and a bad delimiter~~, this will be fixed. 
-![image](https://user-images.githubusercontent.com/98753696/210921205-e4ccffc0-4df7-40a4-906f-fd43ec175487.png)
 
