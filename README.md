@@ -19,7 +19,8 @@ He's done most of the work. I'm just bridging the gap from file structure to mer
  requirements:
 
 -python 3.10 
+ 
+![image](https://user-images.githubusercontent.com/98753696/215885553-c05dbeee-9963-4acc-9c5e-0561473814db.png)
 
- ![image](https://user-images.githubusercontent.com/98753696/212842672-507bab4e-ddc5-46dd-824a-f17cee1f71ca.png)
 
 
