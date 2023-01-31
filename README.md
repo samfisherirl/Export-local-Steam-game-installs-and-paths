@@ -4,7 +4,6 @@
  
  
 
-https://streamable.com/jv5e2l
 VDF Parser in python (and compiled release with .exe) 
 Thank you to @Grub4K at https://github.com/Grub4K/VDFparse/releases
 
