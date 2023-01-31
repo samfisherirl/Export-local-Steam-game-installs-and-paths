@@ -8,17 +8,16 @@ build_exe_options = {
 }
 
 base = None
-if sys.platform == "win32":
-    base = "Win32GUI"
+#if sys.platform == "win32":
+#    base = "Win32GUI"
 
 
 setup(  
-        name = "Geo11_mod_manager",
+        name = "steam_VDF_parser",
         version = "0.1",
-        description = "My  application!",
-        # icon = "C:\\Users\\dower\\Documents\\virtual-reality.ico",
+        description = "steam_VDF_parser",
+        icon = "C:\\Users\\dower\\Documents\\virtual-reality.ico",
         #options = {"build_exe": build_exe_options},
         options = { "build_exe": {"include_files": ["VDFP.exe"] } },
 
-        executables = [Executable("Parse_Steam_Library.py", base=base)])
-                                                        
+        executables = [Executable("main_Parse_VDF.py", base=base)])

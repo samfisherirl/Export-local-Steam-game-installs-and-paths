@@ -62,6 +62,10 @@ def call_vdfp():
 
 def parse_json(list):
     global gameLib
+    with open("output.json", "w", encoding='utf-8', errors='replace') as f:
+        for i in list:
+            f.write(json.dumps(i))
+        
     gameLib = []
     game = {}
     # data format
