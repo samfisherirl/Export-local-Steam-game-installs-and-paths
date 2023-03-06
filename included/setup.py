@@ -13,11 +13,11 @@ base = None
 
 
 setup(  
-        name = "steam_VDF_parser",
+        name = "main_steamvdf",
         version = "0.1",
         description = "steam_VDF_parser",
-        icon = "C:\\Users\\dower\\Documents\\virtual-reality.ico",
+        
         #options = {"build_exe": build_exe_options},
         options = { "build_exe": {"include_files": ["VDFP.exe"] } },
 
-        executables = [Executable("main_Parse_VDF.py", base=base)])
+        executables = [Executable("main_steamvdf.py", base=base, icon = "C:\\Users\\dower\\Documents\\virtual-reality.ico")])

@@ -6,10 +6,10 @@ import os.path
 import librarypaths as LP
 import locatesteam
 import utilities as U
-
+import threading
 dir = os.getcwd()
 Steam = locatesteam.main()
-
+gameLib = []
 with open("vparse.txt", "w") as f:
     f.write(str(dir))
     f.write(str(dir))
@@ -40,6 +40,7 @@ def verify_vdf_location(directory):
 
 
 def call_vdfp():
+    VD = ""
     # Joining the directory and the VDFP.exe file.
     VDFexe = os.path.join(dir, 'VDFP.exe')
     with open('appinfo.json', 'w') as f:
@@ -59,69 +60,79 @@ def call_vdfp():
     list = vals['datasets']
     return list
 
+gameLib = []
+game = {}
+threads = []
+
 
 def parse_json(list):
-    global gameLib
     with open("output.json", "w", encoding='utf-8', errors='replace') as f:
-        for i in list:
-            f.write(json.dumps(i))
+        [f.write(json.dumps(i)) for i in list]
         
-    gameLib = []
-    game = {}
+    for i in list:
+        t = threading.Thread(target=threader, args=[i])
+        t.start()
+        threads.append(t)
+    for thread in threads:
+        thread.join()
+    return gameLib
+
+
+def threader(i):
+    global gameLib, game, threads
     # data format
     # list of games
     # games have attributes (dict)
     # this separates games, dupes and vals
     dot = '.'
     x = 0
-    iterator = ['name', 'path', 'exe', 'longpath', 'id']
+    definition = ['name', 'path', 'exe', 'longpath', 'id']
 
-    for i in list:
-        x = x + 1
+    x = x + 1
+    try:
+        exe = i['data']['appinfo']['config']['launch']
+    except:
+        return
+    try:
+        wd = i['data']['appinfo']['config']['installdir']
+        wd.replace('/', '\\')
+        name = i['data']['appinfo']['common']['name']
+        name.replace('/', '\\')
+    except:
+        return
+    z = 0
+    for i, z in enumerate(exe.items()):
         try:
-            exe = i['data']['appinfo']['config']['launch']
+            executable = exe[str(i)]['executable']
+            executable = executable.replace('/', '\\')
         except:
             continue
-        try:
-            wd = i['data']['appinfo']['config']['installdir']
-            wd.replace('/', '\\')
-            name = i['data']['appinfo']['common']['name']
-            name.replace('/', '\\')
-        except:
+        if ".exe" in executable:
+            holder = [
+                wd,
+                name,
+                executable,
+                'xxxx',
+                x]
+
+            for t, y in zip(definition, holder):
+                try:
+                    # game.update({f"{i}": f"{y}" })
+                    game.update({f'{t}': f'{y}'})
+                    # writer(definition, holder, x)
+                except:
+                    break
+
+            gameLib.append(game)
+            # writer(iterator, holder, x)
+            game = {}
+        # exes = exe['0']['executable']
+        # holder = [wd, name, i['executable']]
+        else:
             continue
-        z = 0
-        for i, z in enumerate(exe.items()):
-            try:
-                executable = exe[str(i)]['executable']
-                executable = executable.replace('/', '\\')
-            except:
-                continue
-            if ".exe" in executable:
-                holder = [
-                    wd,
-                    name,
-                    executable,
-                    'xxxx',
-                    x]
+        dot = dot + '.'
 
-                for t, y in zip(iterator, holder):
-                    try:
-                        # game.update({f"{i}": f"{y}" })
-                        game.update({f'{t}': f'{y}'})
-                        # writer(iterator, holder, x)
-                    except:
-                        break
-
-                gameLib.append(game)
-                # writer(iterator, holder, x)
-                game = {}
-            # exes = exe['0']['executable']
-            # holder = [wd, name, i['executable']]
-            else:
-                continue
-            dot = dot + '.'
-    return gameLib
-
+ 
 
 class Library:
     def __init__(self, exe, path, name, longpath, id):
@@ -155,7 +166,7 @@ def call_lib(lib, directory):
     else:
         library = LP.grab_paths()
     print(str(library))
-    print(lib[9].path + lib[9].exe)
+    #print(lib[9].path + lib[9].exe)
     return library
 
 
@@ -199,10 +210,12 @@ def writer(lib, directory):
             f.write('here are your matched paths, next update includes name. ')
             x = 0
             for i in lib[1]:
+                c = ','
                 ## i.name, i.exe, i.path, i.longpath
-                f.write(str('||' + i[3] + '|' + i[0] + '|' + i[1] + '|' + i[2] + '|'))
+                output = str(c + i[3] + c + i[0] + c + i[1] + c + i[2] + c)
+                f.write(output)
                 f.write('\n')
-                g.write(str('||' + i[3] + '|' + i[0] + '|' + i[1] + '|' + i[2] + '|'))
+                g.write(output)
                 g.write('\n')
                 # for key, val in i.items():
                 #     g.write(("\n   " + key + ': ' + val + '\n'))
