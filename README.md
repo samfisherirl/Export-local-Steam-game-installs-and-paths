@@ -17,7 +17,7 @@ He's done most of the work. I'm just bridging the gap from file structure to mer
 
  requirements:
 
--python 3.10 
+-python 3.11
  
  ![image](https://user-images.githubusercontent.com/98753696/215885658-6289fb35-681b-4bbd-b0e0-eee2d4a428ad.png)
 
