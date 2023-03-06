@@ -1,6 +1,6 @@
 # All-in-one-tool to export steam game paths to csv, no coding or compiling. 
  
- Update: up to 300% faster, now with threading!
+ Update: 3/6/23 works with beta, includes threading for improved performance. 
  
  
 
