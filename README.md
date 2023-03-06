@@ -1,4 +1,6 @@
 # All-in-one-tool to export steam game paths to csv, no coding or compiling. 
+
+<a href="https://github.com/samfisherirl/Export-local-Steam-game-installs-and-paths/releases/download/v1.5/exe.win-amd64-3.11.7z">_direct download link_</a>
  
  Update: 3/6/23 works with beta, includes threading for improved performance. 
  
