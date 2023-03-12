@@ -65,74 +65,49 @@ game = {}
 threads = []
 
 
-def parse_json(list):
-    with open("output.json", "w", encoding='utf-8', errors='replace') as f:
-        [f.write(json.dumps(i)) for i in list]
-        
-    for i in list:
-        t = threading.Thread(target=threader, args=[i])
+def parse_json(lst):
+    game_lib = []
+    threads = []
+    for i in lst:
+        t = threading.Thread(target=threader, args=[i, game_lib])
         t.start()
         threads.append(t)
     for thread in threads:
         thread.join()
-    return gameLib
+    with open("output.json", "w", encoding='utf-8', errors='replace') as f:
+        json.dump(game_lib, f)
+    return game_lib
 
 
-def threader(i):
-    global gameLib, game, threads
-    # data format
-    # list of games
-    # games have attributes (dict)
-    # this separates games, dupes and vals
-    dot = '.'
-    x = 0
+def threader(i, game_lib):
     definition = ['name', 'path', 'exe', 'longpath', 'id']
-
-    x = x + 1
     try:
         exe = i['data']['appinfo']['config']['launch']
-    except:
+        wd = i['data']['appinfo']['config']['installdir'].replace('/', '\\')
+        name = i['data']['appinfo']['common']['name'].replace('/', '\\')
+    except KeyError:
         return
-    try:
-        wd = i['data']['appinfo']['config']['installdir']
-        wd.replace('/', '\\')
-        name = i['data']['appinfo']['common']['name']
-        name.replace('/', '\\')
-    except:
-        return
-    z = 0
-    for i, z in enumerate(exe.items()):
+    for j, (key, value) in enumerate(exe.items()):
         try:
-            executable = exe[str(i)]['executable']
-            executable = executable.replace('/', '\\')
-        except:
+            executable = value['executable'].replace('/', '\\')
+        except KeyError:
             continue
         if ".exe" in executable:
-            holder = [
-                wd,
-                name,
-                executable,
-                'xxxx',
-                x]
+            game = {
+                'name': name,
+                'path': wd,
+                'exe': executable,
+                'longpath': 'xxxx',
+                'id': j + 1
+            }
+            game_lib.append(game)
+    return game_lib
 
-            for t, y in zip(definition, holder):
-                try:
-                    # game.update({f"{i}": f"{y}" })
-                    game.update({f'{t}': f'{y}'})
-                    # writer(definition, holder, x)
-                except:
-                    break
 
-            gameLib.append(game)
-            # writer(iterator, holder, x)
-            game = {}
-        # exes = exe['0']['executable']
-        # holder = [wd, name, i['executable']]
-        else:
-            continue
-        dot = dot + '.'
 
- 
+
+ ## this section replaced by chat gpt, find similar named file
+ # /////////////////////////////////////
 
 class Library:
     def __init__(self, exe, path, name, longpath, id):

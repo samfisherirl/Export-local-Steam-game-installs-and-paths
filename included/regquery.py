@@ -7,18 +7,12 @@ import threading
 dirname = getcwd()
 steam_path = []
 
+POWERSHELL_PATH = r"C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"
 
 def powershell_installs():
-    POWERSHELL_PATH = r"C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"
-
-    cmd = "reg query \"HKCU\\Software\\Microsoft\\Windows NT\\CurrentVersion\\AppCompatFlags\\Compatibility " \
-        "Assistant\\Store\" /s"
-    ps_script_path = []
-
-    result = subprocess.run([POWERSHELL_PATH, cmd], stdout=subprocess.PIPE, stderr=subprocess.PIPE, 
-                            universal_newlines=True)
-
-    return str(result)
+    cmd = "reg query \"HKCU\\Software\\Microsoft\\Windows NT\\CurrentVersion\\AppCompatFlags\\Compatibility Assistant\\Store\" /s"
+    result = subprocess.run([POWERSHELL_PATH, cmd], capture_output=True, text=True)
+    return result.stdout
 
 
 def writer():
@@ -39,22 +33,15 @@ def steamexe(val):
 
 
 def parse_output(output):
-    steam_exe = []
     steam_path = []
-    # lines = output.split('\n')
+    lines = output.split('\n')
     threads = []
-    try:
-        tabsplit = output.split('    ')
-        for x in tabsplit:
-            t = threading.Thread(target=steamexe, args=[x])
-            t.start()
-            threads.append(t)
-    except:
-        print('error')
-
+    for line in lines:
+        t = threading.Thread(target=steamexe, args=(line, steam_path))
+        t.start()
+        threads.append(t)
     for thread in threads:
         thread.join()
-
     return steam_path
 
 
