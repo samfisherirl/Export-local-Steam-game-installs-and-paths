@@ -11,7 +11,7 @@ Thank you to @Grub4K at https://github.com/Grub4K/VDFparse/releases
 
 To use this application, you just need to run the exe file in the release directory. Upon running, the application will perform the following tasks:
 
-Run PowerShell to locate the Steam application's location, even if it's in an unusual location.
+- Run PowerShell to locate the Steam application's location, even if it's in an unusual location.
 - Retrieve and deserialize the Steam library file.
 - Identify all Steam libraries available.
 - Test each game file structure to ensure they have valid paths and return only the ones that meet this criteria, along with the corresponding path, folder structure, and formatted name.
