@@ -15,7 +15,7 @@ To use this application, you just need to run the exe file in the release direct
 - Retrieve and deserialize the Steam library file.
 - Identify all Steam libraries available.
 - Test each game file structure to ensure they have valid paths and return only the ones that meet this criteria, along with the corresponding path, folder structure, and formatted name.
-- While the original developer has done most of the work, the writer of this statement is taking on the task of linking the file structure to complete paths, providing additional file formats, and validating paths.
+- While the original developer has done a signifigant amount of leg work, this script is taking on the task of linking the file structure to complete paths, providing additional file formats, and validating paths.
 
 
  requirements:
